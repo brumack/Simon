@@ -6,6 +6,7 @@ $('document').ready(function() {
   var playCount = 0;
   var score = 0;
   var ding = new Audio('bell.mp3');
+  var buzz = new Audio('buzzer.mp3');
   var power = false;
 
   var btnArray = [
@@ -84,18 +85,19 @@ $('document').ready(function() {
               ding.play();
               win();
             }
-              //reset();
             else {
+              btnLock = true;
               userInput = [];
               sequence.push(generate());
-              console.log(sequence)
               setTimeout(function(){playSeq()},1000);
             }
           }
         }
         else {
+          buzz.play();
           userInput = [];
-          setTimeout(function(){playSeq()},1000);
+          btnLock = true;
+          setTimeout(function(){playSeq()},1500);
         }
 
     }
